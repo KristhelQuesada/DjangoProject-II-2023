@@ -1,0 +1,45 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+    <center> 
+        <h1>Your Orders</h1> <br>
+        <h4> For the status of your orders take into consideration the following:</h4>
+        <h6>w: Waiting for confirmation</h6>
+        <h6>d: Declined</h6>
+        <h6>c: Ordered</h6>
+    </center>
+	<div class="row">
+		<div class="col-lg-12">
+
+            <br>
+			<div class="box-element">
+				<div class="cart-row">
+					<div style="flex:2"></div>
+					<div style="flex:2"><strong>Item</strong></div>
+                    <div style="flex:2"><strong>Size</strong></div>
+                    <div style="flex:2"><strong>Quantity</strong></div>
+					<div style="flex:2"><strong>Price</strong></div>
+					<div style="flex:2"><strong>Status</strong></div>
+                    <div style="flex:2"><strong>Date</strong></div>
+				</div>
+				
+				{% for order in orders %}
+				<div class="cart-row" id="producto">
+					<div style="flex:2"><img class="row-image" src="{{order.product.imageURL}}"></div>
+					<div style="flex:2">
+                        <a href="{% url 'view_product' order.product.id %}">{{ order.product }}</a>
+                    </div>
+                    <div style="flex:2">{{order.product.talla}}</div>
+                    <div style="flex:2">{{order.quantity}}</div>
+					<div style="flex:2">₡{{order.product.price|floatformat:2}}</div>
+
+					<div style="flex:2">{{order.status}}</div>
+                    <div style="flex:2">{{order.order.date_ordered}}</div>
+				</div>
+				{% endfor %}
+		</div>
+	</div>
+	
+	<br>
+	<br>
+{% endblock content %}

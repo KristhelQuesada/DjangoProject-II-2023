@@ -1,0 +1,32 @@
+<!-- Este es el template del home page con los productos -->
+
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<div class="nine"><br/>
+	<h1>WELCOME TO PEARL<span>Find our products</span></h1>
+	<br/>
+</div>
+
+	<div class="row">
+		{% for product in products %}
+		<div class="col-lg-4">
+			<img class="own-image" src="{{product.imageURL}}">
+			<div class="box-element product">
+				<!-- Esto fija el nombre del producto -->
+				<h6><strong>{{product.name}}</strong></h6>
+				<h6><strong>Size: {{product.talla}}</strong></h6>
+				<hr>
+
+				<button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+				<a class="btn btn-outline-success" href="{% url 'view_product' product.id %}">View</a>
+
+				<!-- Esto fija el precio del producto -->
+				<h4 style="display: inline-block; float: right"><span>₡{{product.price|floatformat:2}}</span></h4>
+
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+
+{% endblock content %}

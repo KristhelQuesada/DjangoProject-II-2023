@@ -1,0 +1,58 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Product Card/Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+  </head>
+
+    <div class = "box-element">
+      <div class = "card">
+        <!-- card left -->
+        <div class = "product-imgs">
+          <div class = "img-display">
+            <div class = "img-showcase">
+              <img src = "{{ product.imageURL }}" alt = "shoe image">
+            </div>
+          </div>
+        </div>
+
+
+        <!-- card right -->
+        <div class = "product-content">
+          <h2 class = "product-title">{{ product }}</h2>
+
+          <div class = "product-price">
+            <p class = "new-price"> Price: <span>₡{{ product.price }} </span></p>
+          </div>
+
+          <div class = "product-detail">
+            <br/>
+            <h2> Description: </h2>
+            <p>{{product.description}}</p>
+            <ul>
+              <li>Brand: <span>{{ product.marca }}</span></li>
+              <li>Size: <span>{{ product.talla }}</span></li>
+              <li>Category: <span>{{ product.estilo }}</span></li>
+            </ul>
+
+            <br/>
+            <br/>
+            <center>
+                <button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+            </center>
+
+          </div>
+        </div>
+
+        </div>
+      </div>
+    </div>
+
+    <br/>
+
+{% endblock content %}
