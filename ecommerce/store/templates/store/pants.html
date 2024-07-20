@@ -1,0 +1,30 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+    <h1>Our pants</h1>
+	<div class="row">
+		<div class="col-lg-12">
+
+			<br>
+			<div class="box-element">
+				<div class="cart-row">
+					<div style="flex:2"></div>
+					<div style="flex:2"><strong>Item</strong></div>
+                    <div style="flex:2"><strong>Size</strong></div>
+					<div style="flex:1"><strong>Price</strong></div>
+				</div>
+				
+				{% for pantalon in pantalones %}
+				<div class="cart-row">
+					<div style="flex:2"><img class="row-image" src="{{pantalon.imageURL}}"></div>
+					<div style="flex:2">
+                        <a href="{% url 'view_product' pantalon.id %}">{{ pantalon }}</a>
+                    </div>
+                    <div style="flex:2">{{pantalon.talla}}</div>
+					<div style="flex:1">{{pantalon.price|floatformat:2}}</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock content %}
